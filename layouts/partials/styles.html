@@ -409,7 +409,8 @@
   }
 
   .tag-cloud a,
-  .tag-cloud span {
+  .tag-cloud span,
+  .tag-cloud button {
     display: inline-flex;
     align-items: center;
     min-height: 1.9rem;
@@ -420,17 +421,32 @@
     color: var(--accent-soft);
     font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
     font-size: 0.78rem;
+    line-height: 1;
     transition:
+      background 180ms ease,
       border-color 180ms ease,
       color 180ms ease,
       transform 180ms ease;
   }
 
-  .tag-cloud a:hover {
+  .tag-cloud button {
+    cursor: pointer;
+  }
+
+  .tag-cloud a:hover,
+  .tag-cloud button:hover,
+  .tag-cloud button:focus-visible,
+  .tag-cloud button.is-active {
     border-color: rgba(212, 170, 98, 0.52);
+    background: rgba(212, 170, 98, 0.08);
     color: var(--accent);
     text-decoration: none;
     transform: translateY(-1px);
+  }
+
+  .tag-cloud button:focus-visible {
+    outline: 2px solid rgba(212, 170, 98, 0.42);
+    outline-offset: 3px;
   }
 
   .tag-cloud a span {
@@ -440,6 +456,10 @@
     border: 0;
     background: transparent;
     color: var(--muted);
+  }
+
+  [hidden] {
+    display: none !important;
   }
 
   .empty {

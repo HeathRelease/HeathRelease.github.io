@@ -28,10 +28,31 @@
 
     <section class="wrap section">
       <div class="tag-cloud" aria-label="标签列表">
-        <span>工程实践 2</span>
-        <span>占位数据 2</span>
-        <span>可观测性 1</span>
-        <span>静态站点 1</span>
+        <button type="button" class="is-active" data-tag="all" aria-pressed="true">全部 3</button>
+        <button type="button" data-tag="工程实践" aria-pressed="false">工程实践 2</button>
+        <button type="button" data-tag="占位数据" aria-pressed="false">占位数据 2</button>
+        <button type="button" data-tag="可观测性" aria-pressed="false">可观测性 1</button>
+        <button type="button" data-tag="静态站点" aria-pressed="false">静态站点 1</button>
+      </div>
+    </section>
+
+    <section class="wrap section" aria-live="polite">
+      <div class="post-list" id="tag-results">
+        <article class="post-row" data-tags="工程实践 占位数据">
+          <div class="meta">2026-05-14 / 工程实践、占位数据</div>
+          <h2><a href="/posts/placeholder-workflow/">示例文章：从需求到发布的内容工作流</a></h2>
+          <p>用占位文本展示文章摘要、日期和标签，适合作为后续真实内容的替换位置。</p>
+        </article>
+        <article class="post-row" data-tags="可观测性 工程实践">
+          <div class="meta">2026-05-10 / 可观测性、工程实践</div>
+          <h2><a href="/posts/placeholder-observability/">示例文章：日志、指标与排查路径</a></h2>
+          <p>展示博客可以承载的问题记录、分析过程和复盘结构。</p>
+        </article>
+        <article class="post-row" data-tags="静态站点 占位数据">
+          <div class="meta">2026-05-06 / 静态站点、占位数据</div>
+          <h2><a href="/posts/placeholder-hugo-structure/">示例文章：Hugo 页面结构规划</a></h2>
+          <p>用于占位展示列表页、详情页和标签页之间的导航关系。</p>
+        </article>
       </div>
     </section>
   </main>
@@ -39,5 +60,26 @@
   <footer class="site-footer">
     <div class="wrap">Built with Hugo and GitHub Pages</div>
   </footer>
+  <script>
+    const tagButtons = document.querySelectorAll(".tag-cloud button");
+    const tagPosts = document.querySelectorAll("#tag-results .post-row");
+
+    tagButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const selected = button.dataset.tag;
+
+        tagButtons.forEach((item) => {
+          const isActive = item === button;
+          item.classList.toggle("is-active", isActive);
+          item.setAttribute("aria-pressed", String(isActive));
+        });
+
+        tagPosts.forEach((post) => {
+          const isVisible = selected === "all" || post.dataset.tags.includes(selected);
+          post.hidden = !isVisible;
+        });
+      });
+    });
+  </script>
 </body>
 </html>
