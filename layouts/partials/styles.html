@@ -4,16 +4,17 @@
   }
 
   :root {
-    --bg: #202020;
-    --surface: #272727;
-    --surface-soft: #242424;
-    --text: #d8d8d8;
-    --muted: #9a9a9a;
-    --faint: #6f6f6f;
-    --line: #383838;
-    --heading: #ffffff;
-    --accent: #6cb6ff;
-    --accent-warm: #e0a458;
+    --bg: #141615;
+    --surface: #1a1e1b;
+    --surface-soft: #20261f;
+    --text: #ded7c8;
+    --muted: #aaa191;
+    --faint: #777062;
+    --line: #30362f;
+    --heading: #f7f0e4;
+    --accent: #d4aa62;
+    --accent-soft: #8fb6a4;
+    --accent-warm: #c47f5b;
     --measure: 38rem;
   }
 
@@ -24,10 +25,16 @@
 
   body {
     margin: 0;
-    background: var(--bg);
+    background:
+      linear-gradient(180deg, #191c19 0%, #111312 28rem, var(--bg) 100%);
     color: var(--text);
     font-family: Georgia, "Times New Roman", "Songti SC", "SimSun", serif;
     line-height: 1.65;
+  }
+
+  ::selection {
+    background: rgba(212, 170, 98, 0.28);
+    color: var(--heading);
   }
 
   a {
@@ -37,6 +44,7 @@
 
   a:hover,
   a:focus {
+    color: #e7c889;
     text-decoration: underline;
   }
 
@@ -49,7 +57,8 @@
 
   .site-header {
     border-bottom: 1px solid var(--line);
-    background: var(--bg);
+    background: rgba(20, 22, 21, 0.92);
+    backdrop-filter: blur(12px);
   }
 
   .nav {
@@ -67,6 +76,12 @@
     letter-spacing: 0;
   }
 
+  .brand:hover,
+  .brand:focus {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
   nav {
     display: flex;
     flex-wrap: wrap;
@@ -82,7 +97,7 @@
 
   nav a:hover,
   nav a:focus {
-    color: var(--heading);
+    color: var(--accent);
   }
 
   .hero,
@@ -108,6 +123,7 @@
 
   .eyebrow {
     margin: 0 0 0.4rem;
+    color: var(--accent-soft);
   }
 
   h1,
@@ -123,6 +139,10 @@
     color: var(--heading);
     font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
     line-height: 1.2;
+  }
+
+  h1 {
+    letter-spacing: 0;
   }
 
   h1 {
@@ -148,8 +168,9 @@
 
   .panel {
     margin-top: 1.8rem;
-    padding: 1rem 0 0;
+    padding: 1rem 0 0 1rem;
     border-top: 1px solid var(--line);
+    border-left: 2px solid rgba(143, 182, 164, 0.55);
   }
 
   .panel p {
@@ -172,7 +193,7 @@
 
   .metric strong {
     display: block;
-    color: var(--heading);
+    color: var(--accent);
     font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
     font-size: 1.55rem;
     line-height: 1;
@@ -191,7 +212,7 @@
   .section-head {
     margin-bottom: 0.8rem;
     padding-bottom: 0.6rem;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid rgba(212, 170, 98, 0.26);
   }
 
   .section-head h2 {
@@ -215,7 +236,7 @@
   .topic-card,
   .post-row {
     padding: 1rem 0;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid rgba(48, 54, 47, 0.9);
   }
 
   .card:first-child,
@@ -231,6 +252,16 @@
     color: var(--muted);
   }
 
+  .card h3 a,
+  .post-row h2 a {
+    color: var(--heading);
+  }
+
+  .card h3 a:hover,
+  .post-row h2 a:hover {
+    color: var(--accent);
+  }
+
   .meta,
   .topic-count {
     margin-bottom: 0.3rem;
@@ -239,7 +270,7 @@
   .article-head {
     margin-bottom: 1.5rem;
     padding-bottom: 1.2rem;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid rgba(212, 170, 98, 0.26);
   }
 
   .article-body {
@@ -248,6 +279,7 @@
 
   .article-body h2 {
     margin-top: 2rem;
+    color: var(--accent-soft);
   }
 
   .article-body p,
@@ -271,10 +303,10 @@
     align-items: center;
     min-height: 1.9rem;
     padding: 0 0.7rem;
-    border: 1px solid var(--line);
+    border: 1px solid rgba(143, 182, 164, 0.28);
     border-radius: 999px;
     background: var(--surface-soft);
-    color: var(--accent);
+    color: var(--accent-soft);
     font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
     font-size: 0.78rem;
   }
