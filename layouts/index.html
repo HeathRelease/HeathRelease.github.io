@@ -1,5 +1,5 @@
 {{ define "main" }}
-{{ $data := site.Data.showcase }}
+{{ $data := hugo.Data.showcase }}
 {{ $posts := where site.RegularPages "Section" "posts" }}
 <section class="hero">
   <div class="wrap hero-grid">

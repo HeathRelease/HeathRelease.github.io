@@ -1,5 +1,5 @@
 baseURL = 'https://heathrelease.github.io/'
-languageCode = 'zh-CN'
+locale = 'zh-CN'
 title = 'Hugo Blog Starter'
 hasCJKLanguage = true
 enableRobotsTXT = true
