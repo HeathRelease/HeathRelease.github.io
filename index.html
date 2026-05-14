@@ -5,132 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hugo Blog Starter | 占位数据演示</title>
   <meta name="description" content="一个使用占位数据展示的 Hugo 博客首页。" />
-  <style>
-    * { box-sizing: border-box; }
-    :root {
-      --bg: #f6f7f9;
-      --surface: #ffffff;
-      --text: #172033;
-      --muted: #667085;
-      --line: #d8dee8;
-      --accent: #0f766e;
-      --ink: #111827;
-      --max: 1120px;
-    }
-    body {
-      margin: 0;
-      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-    }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .wrap { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
-    header {
-      border-bottom: 1px solid var(--line);
-      background: #fff;
-    }
-    .nav {
-      min-height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-    .brand { color: var(--ink); font-weight: 800; }
-    nav { display: flex; gap: 14px; flex-wrap: wrap; font-weight: 650; }
-    .hero {
-      border-bottom: 1px solid var(--line);
-      background: #eaf4f2;
-      padding: 64px 0 54px;
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) 320px;
-      gap: 36px;
-      align-items: end;
-    }
-    .eyebrow {
-      margin: 0 0 12px;
-      color: var(--accent);
-      font-size: 14px;
-      font-weight: 800;
-    }
-    h1 {
-      max-width: 780px;
-      margin: 0 0 18px;
-      color: var(--ink);
-      font-size: 46px;
-      line-height: 1.18;
-    }
-    .lede {
-      max-width: 760px;
-      margin: 0;
-      color: #405168;
-      font-size: 18px;
-    }
-    .panel, .card {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--surface);
-    }
-    .panel { padding: 20px; }
-    .panel h2, .card h3 { margin: 0 0 8px; color: var(--ink); }
-    .panel p, .card p { margin: 0; color: var(--muted); }
-    .metrics {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      padding: 40px 0 18px;
-    }
-    .metric {
-      border-top: 3px solid var(--ink);
-      padding-top: 12px;
-    }
-    .metric strong {
-      display: block;
-      color: var(--ink);
-      font-size: 30px;
-      line-height: 1.1;
-    }
-    .metric span { color: var(--muted); }
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      align-items: end;
-      margin: 26px 0 18px;
-    }
-    .section-head h2 { margin: 0; color: var(--ink); font-size: 28px; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      padding-bottom: 56px;
-    }
-    .card { padding: 20px; }
-    .meta {
-      margin-bottom: 10px;
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 650;
-    }
-    footer {
-      border-top: 1px solid var(--line);
-      background: #fff;
-      color: var(--muted);
-      padding: 22px 0;
-      font-size: 14px;
-    }
-    @media (max-width: 880px) {
-      .hero-grid, .metrics, .grid { grid-template-columns: 1fr; }
-      h1 { font-size: 34px; }
-    }
-  </style>
+  <link rel="stylesheet" href="/site.css" />
 </head>
 <body>
-  <header>
+  <header class="site-header">
     <div class="wrap nav">
       <a class="brand" href="/">Hugo Blog Starter</a>
       <nav aria-label="主导航">
@@ -147,7 +25,7 @@
         <p class="eyebrow">Hugo Blog / Placeholder Data</p>
         <h1>一个使用 Hugo 管理内容的静态博客模板。</h1>
         <p class="lede">
-          首页、文章列表、标签页和文章详情页都改为占位展示数据，内容可直接替换为真实博客文章。
+          首页、文章列表、标签页和文章详情页都使用占位展示数据，内容可直接替换为真实博客文章。
         </p>
       </div>
       <aside class="panel">
@@ -164,26 +42,28 @@
       <div class="metric"><strong>3</strong><span>发布状态</span></div>
     </section>
 
-    <div class="section-head">
-      <h2>示例文章</h2>
-      <a href="/posts/">查看全部</a>
-    </div>
-    <section class="grid" aria-label="示例文章列表">
-      <article class="card">
-        <div class="meta">2026-05-14 / 工程实践</div>
-        <h3>示例文章：从需求到发布的内容工作流</h3>
-        <p>用占位文本展示文章摘要、日期和标签，适合作为后续真实内容的替换位置。</p>
-      </article>
-      <article class="card">
-        <div class="meta">2026-05-10 / 可观测性</div>
-        <h3>示例文章：日志、指标与排查路径</h3>
-        <p>展示博客可以承载的问题记录、分析过程和复盘结构。</p>
-      </article>
-      <article class="card">
-        <div class="meta">2026-05-06 / 静态站点</div>
-        <h3>示例文章：Hugo 页面结构规划</h3>
-        <p>用于占位展示列表页、详情页和标签页之间的导航关系。</p>
-      </article>
+    <section class="section" aria-labelledby="posts-title">
+      <div class="section-head">
+        <h2 id="posts-title">示例文章</h2>
+        <a href="/posts/">查看全部</a>
+      </div>
+      <div class="grid" aria-label="示例文章列表">
+        <article class="card">
+          <div class="meta">2026-05-14 / 工程实践</div>
+          <h3><a href="/posts/placeholder-workflow/">示例文章：从需求到发布的内容工作流</a></h3>
+          <p>用占位文本展示文章摘要、日期和标签，适合作为后续真实内容的替换位置。</p>
+        </article>
+        <article class="card">
+          <div class="meta">2026-05-10 / 可观测性</div>
+          <h3><a href="/posts/placeholder-observability/">示例文章：日志、指标与排查路径</a></h3>
+          <p>展示博客可以承载的问题记录、分析过程和复盘结构。</p>
+        </article>
+        <article class="card">
+          <div class="meta">2026-05-06 / 静态站点</div>
+          <h3><a href="/posts/placeholder-hugo-structure/">示例文章：Hugo 页面结构规划</a></h3>
+          <p>用于占位展示列表页、详情页和标签页之间的导航关系。</p>
+        </article>
+      </div>
     </section>
   </main>
 
