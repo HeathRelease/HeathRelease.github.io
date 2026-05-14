@@ -75,7 +75,8 @@
         });
 
         tagPosts.forEach((post) => {
-          const isVisible = selected === "all" || post.dataset.tags.includes(selected);
+          const tags = post.dataset.tags.split(" ");
+          const isVisible = selected === "all" || tags.includes(selected);
           post.hidden = !isVisible;
         });
       });
