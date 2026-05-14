@@ -1,0 +1,14 @@
+baseURL = 'https://heathrelease.github.io/'
+languageCode = 'zh-CN'
+title = 'Hugo Blog Starter'
+hasCJKLanguage = true
+enableRobotsTXT = true
+
+[params]
+description = '一个使用占位展示数据的 Hugo 静态博客。'
+
+[pagination]
+pagerSize = 6
+
+[taxonomies]
+tag = 'tags'

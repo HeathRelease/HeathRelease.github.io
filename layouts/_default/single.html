@@ -1,0 +1,13 @@
+{{ define "main" }}
+<article class="wrap article">
+  <header class="article-head">
+    <p class="eyebrow">Post</p>
+    <h1>{{ .Title }}</h1>
+    <div class="meta">{{ .Date.Format "2006-01-02" }}{{ with .Params.tags }} / {{ delimit . "、" }}{{ end }}</div>
+    {{ with .Summary }}<p class="lede">{{ . }}</p>{{ end }}
+  </header>
+  <div class="article-body">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

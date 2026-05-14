@@ -1,0 +1,63 @@
+{{ define "main" }}
+{{ $data := site.Data.showcase }}
+{{ $posts := where site.RegularPages "Section" "posts" }}
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">{{ $data.hero.eyebrow }}</p>
+      <h1>{{ $data.hero.title }}</h1>
+      <p class="lede">{{ $data.hero.description }}</p>
+    </div>
+    <aside class="panel">
+      <h2>{{ $data.hero.panel_title }}</h2>
+      <p>{{ $data.hero.panel_text }}</p>
+    </aside>
+  </div>
+</section>
+
+<section class="wrap metrics" aria-label="占位指标">
+  {{ range $data.metrics }}
+    <div class="metric">
+      <strong>{{ .value }}</strong>
+      <span>{{ .label }}</span>
+    </div>
+  {{ end }}
+</section>
+
+<section class="wrap section">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Latest Posts</p>
+      <h2>示例文章</h2>
+    </div>
+    <a href="{{ "/posts/" | relURL }}">查看全部</a>
+  </div>
+  <div class="card-grid">
+    {{ range first 3 ($posts.ByDate.Reverse) }}
+      <article class="card">
+        <div class="meta">{{ .Date.Format "2006-01-02" }}{{ with .Params.tags }} / {{ delimit . "、" }}{{ end }}</div>
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        <p>{{ .Summary }}</p>
+      </article>
+    {{ end }}
+  </div>
+</section>
+
+<section class="wrap section">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Topics</p>
+      <h2>主题展示</h2>
+    </div>
+  </div>
+  <div class="topic-grid">
+    {{ range $data.topics }}
+      <article class="topic-card">
+        <div class="topic-count">{{ .count }}</div>
+        <h3>{{ .name }}</h3>
+        <p>{{ .description }}</p>
+      </article>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

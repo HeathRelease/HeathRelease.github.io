@@ -1,0 +1,21 @@
+{{ define "main" }}
+<section class="wrap page-head">
+  <p class="eyebrow">Archive</p>
+  <h1>{{ .Title }}</h1>
+  {{ with .Description }}<p class="lede">{{ . }}</p>{{ end }}
+</section>
+
+<section class="wrap section">
+  <div class="post-list">
+    {{ range .Pages.ByDate.Reverse }}
+      <article class="post-row">
+        <div class="meta">{{ .Date.Format "2006-01-02" }}{{ with .Params.tags }} / {{ delimit . "、" }}{{ end }}</div>
+        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        <p>{{ .Summary }}</p>
+      </article>
+    {{ else }}
+      <p class="empty">暂无内容。</p>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
