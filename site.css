@@ -92,13 +92,16 @@ a:focus {
 }
 
 .nav {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
   padding-top: 1.3rem;
   padding-bottom: 1.3rem;
 }
 
 .brand {
   display: inline-block;
-  margin-bottom: 0.35rem;
   color: var(--heading);
   font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
   font-size: 1.45rem;
@@ -117,6 +120,7 @@ nav {
   display: flex;
   flex-wrap: wrap;
   gap: 0.85rem;
+  justify-content: flex-end;
   color: var(--muted);
   font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
   font-size: 0.78rem;
@@ -159,32 +163,32 @@ footer,
 }
 
 .brand { animation-delay: 40ms; }
-nav { animation-delay: 90ms; }
+nav { animation-delay: 140ms; }
 .hero .eyebrow,
 .page-head .eyebrow,
-.article-head .eyebrow { animation-delay: 90ms; }
+.article-head .eyebrow { animation-delay: 230ms; }
 .hero h1,
 .page-head h1,
-.article-head h1 { animation-delay: 140ms; }
+.article-head h1 { animation-delay: 280ms; }
 .hero .lede,
 .page-head .lede,
-.article-head .lede { animation-delay: 190ms; }
-.panel { animation-delay: 240ms; }
-.metrics { animation-delay: 280ms; }
-.section-head { animation-delay: 320ms; }
+.article-head .lede { animation-delay: 330ms; }
+.panel { animation-delay: 380ms; }
+.metrics { animation-delay: 430ms; }
+.section-head { animation-delay: 480ms; }
 .card:nth-child(1),
 .post-row:nth-child(1),
-.topic-card:nth-child(1) { animation-delay: 360ms; }
+.topic-card:nth-child(1) { animation-delay: 540ms; }
 .card:nth-child(2),
 .post-row:nth-child(2),
-.topic-card:nth-child(2) { animation-delay: 420ms; }
+.topic-card:nth-child(2) { animation-delay: 600ms; }
 .card:nth-child(3),
 .post-row:nth-child(3),
-.topic-card:nth-child(3) { animation-delay: 480ms; }
+.topic-card:nth-child(3) { animation-delay: 660ms; }
 .tag-cloud,
-.article-body { animation-delay: 260ms; }
+.article-body { animation-delay: 380ms; }
 footer,
-.site-footer { animation-delay: 520ms; }
+.site-footer { animation-delay: 720ms; }
 
 .hero-grid {
   display: block;
@@ -460,6 +464,16 @@ footer {
 @media (max-width: 640px) {
   html {
     font-size: 18px;
+  }
+
+  .nav {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  nav {
+    justify-content: flex-start;
   }
 
   h1 {
