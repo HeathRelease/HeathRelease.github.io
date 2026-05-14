@@ -1,6 +1,6 @@
-# Hugo Blog Starter
+# Heath's Blog
 
-这是一个使用 Hugo 管理内容的 GitHub Pages 静态博客。当前页面内容全部使用占位展示数据。
+这是 Heath's Blog 的 Hugo 源码仓库，用于构建并部署到 GitHub Pages。
 
 ## 本地预览
 
@@ -11,7 +11,7 @@ hugo server
 ## 新增文章
 
 ```powershell
-hugo new content/posts/example-title.md
+hugo new content/posts/my-post.md
 ```
 
 ## 部署

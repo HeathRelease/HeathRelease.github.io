@@ -3,71 +3,56 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hugo Blog Starter | 占位数据演示</title>
-  <meta name="description" content="一个使用占位数据展示的 Hugo 博客首页。" />
+  <title>Heath's Blog</title>
+  <meta name="description" content="Heath's Blog" />
   <link rel="stylesheet" href="/site.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="wrap nav">
-      <a class="brand" href="/">Hugo Blog Starter</a>
+      <a class="brand" href="/">Heath's Blog</a>
       <nav aria-label="主导航">
+        <a href="/">首页</a>
         <a href="/posts/">文章</a>
         <a href="/tags/">标签</a>
       </nav>
     </div>
   </header>
 
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <p class="eyebrow">Hugo Blog / Placeholder Data</p>
-        <h1>一个使用 Hugo 管理内容的静态博客模板。</h1>
-        <p class="lede">
-          首页、文章列表、标签页和文章详情页都使用占位展示数据，内容可直接替换为真实博客文章。
-        </p>
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Heath's Blog</p>
+          <h1>Heath's Blog</h1>
+          <p class="lede">记录技术实践、项目构建与日常思考。</p>
+        </div>
+        <aside class="panel">
+          <h2>关于这里</h2>
+          <p>这是 Heath 的个人博客，后续文章会按时间归档，并通过标签组织。</p>
+        </aside>
       </div>
-      <aside class="panel">
-        <h2>展示摘要</h2>
-        <p>这里使用虚拟指标、示例专题和占位文章，所有内容均为展示数据。</p>
-      </aside>
-    </div>
-  </section>
-
-  <main class="wrap" id="showcase">
-    <section class="metrics" aria-label="占位指标">
-      <div class="metric"><strong>3</strong><span>示例文章</span></div>
-      <div class="metric"><strong>4</strong><span>占位标签</span></div>
-      <div class="metric"><strong>6</strong><span>标签引用</span></div>
     </section>
 
-    <section class="section" aria-labelledby="posts-title">
+    <section class="wrap section" aria-labelledby="posts-title">
       <div class="section-head">
-        <h2 id="posts-title">示例文章</h2>
+        <div>
+          <p class="eyebrow">Latest Posts</p>
+          <h2 id="posts-title">最近文章</h2>
+        </div>
         <a href="/posts/">查看全部</a>
       </div>
-      <div class="grid" aria-label="示例文章列表">
-        <article class="card">
-          <div class="meta">2026-05-14 / 工程实践</div>
-          <h3><a href="/posts/placeholder-workflow/">示例文章：从需求到发布的内容工作流</a></h3>
-          <p>用占位文本展示文章摘要、日期和标签，适合作为后续真实内容的替换位置。</p>
-        </article>
-        <article class="card">
-          <div class="meta">2026-05-10 / 可观测性</div>
-          <h3><a href="/posts/placeholder-observability/">示例文章：日志、指标与排查路径</a></h3>
-          <p>展示博客可以承载的问题记录、分析过程和复盘结构。</p>
-        </article>
-        <article class="card">
-          <div class="meta">2026-05-06 / 静态站点</div>
-          <h3><a href="/posts/placeholder-hugo-structure/">示例文章：Hugo 页面结构规划</a></h3>
-          <p>用于占位展示列表页、详情页和标签页之间的导航关系。</p>
-        </article>
+      <div class="card-grid">
+        <p class="empty">暂无文章。</p>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="wrap">Built with Hugo and GitHub Pages</div>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>Heath's Blog</span>
+      <span>Powered by Hugo</span>
+    </div>
   </footer>
 </body>
 </html>

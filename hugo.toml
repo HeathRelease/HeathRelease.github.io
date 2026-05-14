@@ -1,11 +1,11 @@
 baseURL = 'https://heathrelease.github.io/'
 locale = 'zh-CN'
-title = 'Hugo Blog Starter'
+title = "Heath's Blog"
 hasCJKLanguage = true
 enableRobotsTXT = true
 
 [params]
-description = '一个使用占位展示数据的 Hugo 静态博客。'
+description = "Heath's Blog"
 
 [pagination]
 pagerSize = 6

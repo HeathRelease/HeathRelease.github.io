@@ -2,13 +2,15 @@
 <section class="wrap page-head">
   <p class="eyebrow">Tags</p>
   <h1>{{ .Title }}</h1>
-  <p class="lede">按占位标签浏览示例文章。</p>
+  <p class="lede">按标签浏览文章。</p>
 </section>
 
 <section class="wrap section">
   <div class="tag-cloud">
     {{ range .Data.Terms.Alphabetical }}
       <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span>{{ .Count }}</span></a>
+    {{ else }}
+      <p class="empty">暂无标签。</p>
     {{ end }}
   </div>
 </section>
