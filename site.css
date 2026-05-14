@@ -32,6 +32,19 @@ html {
   }
 }
 
+@keyframes soft-reveal {
+  from {
+    opacity: 0;
+    filter: blur(4px);
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
 body {
   margin: 0;
   background:
@@ -125,6 +138,53 @@ nav a:focus {
   padding-top: 3rem;
   padding-bottom: 2rem;
 }
+
+.brand,
+nav,
+.hero .eyebrow,
+.hero h1,
+.hero .lede,
+.panel,
+.metrics,
+.section-head,
+.card,
+.topic-card,
+.post-row,
+.tag-cloud,
+.article-head,
+.article-body,
+footer,
+.site-footer {
+  animation: soft-reveal 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.brand { animation-delay: 40ms; }
+nav { animation-delay: 90ms; }
+.hero .eyebrow,
+.page-head .eyebrow,
+.article-head .eyebrow { animation-delay: 90ms; }
+.hero h1,
+.page-head h1,
+.article-head h1 { animation-delay: 140ms; }
+.hero .lede,
+.page-head .lede,
+.article-head .lede { animation-delay: 190ms; }
+.panel { animation-delay: 240ms; }
+.metrics { animation-delay: 280ms; }
+.section-head { animation-delay: 320ms; }
+.card:nth-child(1),
+.post-row:nth-child(1),
+.topic-card:nth-child(1) { animation-delay: 360ms; }
+.card:nth-child(2),
+.post-row:nth-child(2),
+.topic-card:nth-child(2) { animation-delay: 420ms; }
+.card:nth-child(3),
+.post-row:nth-child(3),
+.topic-card:nth-child(3) { animation-delay: 480ms; }
+.tag-cloud,
+.article-body { animation-delay: 260ms; }
+footer,
+.site-footer { animation-delay: 520ms; }
 
 .hero-grid {
   display: block;
