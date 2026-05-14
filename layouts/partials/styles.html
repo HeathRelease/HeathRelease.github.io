@@ -23,6 +23,17 @@
     scroll-behavior: smooth;
   }
 
+  @keyframes page-rise {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   body {
     margin: 0;
     background:
@@ -30,6 +41,7 @@
     color: var(--text);
     font-family: Georgia, "Times New Roman", "Songti SC", "SimSun", serif;
     line-height: 1.65;
+    animation: page-rise 460ms ease-out both;
   }
 
   ::selection {
@@ -40,12 +52,18 @@
   a {
     color: var(--accent);
     text-decoration: none;
+    text-decoration-color: rgba(212, 170, 98, 0);
+    text-underline-offset: 0.18em;
+    transition:
+      color 160ms ease,
+      text-decoration-color 160ms ease;
   }
 
   a:hover,
   a:focus {
     color: #e7c889;
     text-decoration: underline;
+    text-decoration-color: rgba(231, 200, 137, 0.72);
   }
 
   .wrap {
@@ -59,6 +77,7 @@
     border-bottom: 1px solid var(--line);
     background: rgba(20, 22, 21, 0.92);
     backdrop-filter: blur(12px);
+    transition: border-color 180ms ease, background 180ms ease;
   }
 
   .nav {
@@ -74,6 +93,7 @@
     font-size: 1.45rem;
     font-weight: 700;
     letter-spacing: 0;
+    transition: color 160ms ease;
   }
 
   .brand:hover,
@@ -93,6 +113,7 @@
 
   nav a {
     color: var(--muted);
+    transition: color 160ms ease;
   }
 
   nav a:hover,
@@ -168,9 +189,17 @@
 
   .panel {
     margin-top: 1.8rem;
-    padding: 1rem 0 0 1rem;
-    border-top: 1px solid var(--line);
-    border-left: 2px solid rgba(143, 182, 164, 0.55);
+    padding: 0.1rem 0 0.1rem 1rem;
+    border-left: 2px solid rgba(143, 182, 164, 0.68);
+    transform: translateX(0);
+    transition:
+      border-color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .panel:hover {
+    border-left-color: rgba(212, 170, 98, 0.72);
+    transform: translateX(3px);
   }
 
   .panel p {
@@ -189,6 +218,14 @@
   .metric {
     padding-top: 0.7rem;
     border-top: 1px solid var(--line);
+    transition:
+      border-color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .metric:hover {
+    border-color: rgba(212, 170, 98, 0.45);
+    transform: translateY(-2px);
   }
 
   .metric strong {
@@ -237,6 +274,16 @@
   .post-row {
     padding: 1rem 0;
     border-bottom: 1px solid rgba(48, 54, 47, 0.9);
+    transition:
+      border-color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .card:hover,
+  .topic-card:hover,
+  .post-row:hover {
+    border-bottom-color: rgba(212, 170, 98, 0.36);
+    transform: translateX(4px);
   }
 
   .card:first-child,
@@ -309,6 +356,17 @@
     color: var(--accent-soft);
     font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
     font-size: 0.78rem;
+    transition:
+      border-color 180ms ease,
+      color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .tag-cloud a:hover {
+    border-color: rgba(212, 170, 98, 0.52);
+    color: var(--accent);
+    text-decoration: none;
+    transform: translateY(-1px);
   }
 
   .tag-cloud a span {
@@ -352,6 +410,16 @@
 
     .metrics {
       grid-template-columns: 1fr;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 1ms !important;
+      scroll-behavior: auto !important;
+      transition-duration: 1ms !important;
     }
   }
 </style>
