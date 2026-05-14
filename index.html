@@ -3,36 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>你的名字 | 个人主页</title>
-  <meta name="description" content="你的名字的个人主页，展示项目经历、技术栈与联系方式。" />
+  <title>HeathRelease Blog | 技术笔记</title>
+  <meta name="description" content="HeathRelease 的技术博客，记录 .NET、工业视觉、设备通信、数据库与工程实践笔记。" />
   <style>
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
     :root {
-      --bg: #f5f7fb;
-      --card: #ffffff;
-      --text: #1f2937;
-      --subtext: #6b7280;
-      --primary: #2563eb;
-      --border: #e5e7eb;
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-      --radius: 18px;
-      --max-width: 1080px;
+      --bg: #f7f8fa;
+      --surface: #ffffff;
+      --text: #172033;
+      --muted: #64748b;
+      --line: #d9dee8;
+      --accent: #0f766e;
+      --accent-strong: #0b5f59;
+      --blue: #1d4ed8;
+      --warm: #b45309;
+      --ink: #111827;
+      --max-width: 1120px;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
+      margin: 0;
       font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
-      background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 240px);
+      background: var(--bg);
       color: var(--text);
       line-height: 1.7;
     }
 
     a {
-      color: var(--primary);
+      color: var(--accent-strong);
       text-decoration: none;
     }
 
@@ -40,53 +45,115 @@
       text-decoration: underline;
     }
 
-    .container {
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+    }
+
+    .header-inner,
+    .masthead-inner,
+    .content-grid,
+    .footer-inner {
       width: min(var(--max-width), calc(100% - 32px));
       margin: 0 auto;
     }
 
-    .hero {
-      padding: 56px 0 28px;
-    }
-
-    .hero-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      box-shadow: var(--shadow);
-      padding: 40px 32px;
-      display: grid;
-      grid-template-columns: 1.4fr 0.9fr;
-      gap: 28px;
+    .header-inner {
+      min-height: 64px;
+      display: flex;
       align-items: center;
+      justify-content: space-between;
+      gap: 16px;
     }
 
-    .badge {
-      display: inline-block;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: #e8f0ff;
-      color: var(--primary);
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: var(--ink);
+      color: #ffffff;
+      font-size: 15px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 10px;
+      border-radius: 8px;
+      color: #334155;
       font-size: 14px;
       font-weight: 600;
-      margin-bottom: 16px;
+    }
+
+    nav a:hover {
+      background: #eef2f7;
+      text-decoration: none;
+    }
+
+    .masthead {
+      border-bottom: 1px solid var(--line);
+      background: #edf5f4;
+    }
+
+    .masthead-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) 320px;
+      gap: 36px;
+      align-items: end;
+      padding: 64px 0 52px;
+    }
+
+    .kicker {
+      color: var(--accent-strong);
+      font-size: 14px;
+      font-weight: 800;
+      margin: 0 0 12px;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
     }
 
     h1 {
-      font-size: 40px;
-      line-height: 1.2;
-      margin-bottom: 12px;
+      max-width: 780px;
+      margin-bottom: 18px;
+      color: var(--ink);
+      font-size: 48px;
+      line-height: 1.16;
+      font-weight: 850;
     }
 
-    .subtitle {
-      font-size: 18px;
-      color: var(--subtext);
-      margin-bottom: 20px;
-    }
-
-    .intro {
-      color: #374151;
+    .lede {
+      max-width: 760px;
       margin-bottom: 24px;
+      color: #405168;
+      font-size: 18px;
     }
 
     .hero-actions {
@@ -96,339 +163,449 @@
     }
 
     .btn {
-      display: inline-block;
-      padding: 12px 18px;
-      border-radius: 12px;
-      font-weight: 600;
-      transition: 0.2s ease;
-      border: 1px solid transparent;
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink);
+      font-weight: 700;
+      background: #ffffff;
+    }
+
+    .btn:hover {
+      background: #f3f6f8;
+      text-decoration: none;
     }
 
     .btn-primary {
-      background: var(--primary);
-      color: white;
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #ffffff;
     }
 
     .btn-primary:hover {
-      opacity: 0.92;
-      text-decoration: none;
+      background: var(--accent-strong);
     }
 
-    .btn-secondary {
-      background: white;
-      color: var(--text);
-      border-color: var(--border);
+    .author-panel {
+      border: 1px solid #cbd8d6;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 18px;
     }
 
-    .btn-secondary:hover {
-      background: #f9fafb;
-      text-decoration: none;
+    .author-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
     }
 
-    .profile-box {
-      background: #f8fafc;
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 24px;
-    }
-
-    .profile-avatar {
-      width: 88px;
-      height: 88px;
+    .author-top img {
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #2563eb, #60a5fa);
-      color: white;
-      display: grid;
-      place-items: center;
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 16px;
+      border: 2px solid #ffffff;
     }
 
-    .profile-box h3 {
-      margin-bottom: 8px;
+    .author-panel h2 {
+      margin-bottom: 2px;
       font-size: 20px;
+      color: var(--ink);
     }
 
-    .profile-box p {
-      color: var(--subtext);
-      margin-bottom: 10px;
+    .author-panel p {
+      margin-bottom: 12px;
+      color: #506174;
       font-size: 15px;
     }
 
-    section {
-      margin: 24px 0;
+    .quick-notes {
+      display: grid;
+      gap: 8px;
+      margin-top: 14px;
+      color: #3f4f63;
+      font-size: 14px;
     }
 
-    .section-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 28px;
+    .quick-notes span {
+      display: block;
+      padding-top: 8px;
+      border-top: 1px solid #d7e2e0;
     }
 
-    .section-title {
-      font-size: 24px;
+    .content-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: 42px;
+      padding: 42px 0 56px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
       margin-bottom: 18px;
     }
 
-    .chips {
+    .section-heading h2 {
+      margin: 0;
+      color: var(--ink);
+      font-size: 28px;
+      line-height: 1.25;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .post-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .post-card {
+      display: grid;
+      gap: 10px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+
+    .post-card.featured {
+      border-color: #9ac6c1;
+      background: #fbfefe;
+    }
+
+    .post-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 14px;
     }
 
-    .chip {
-      background: #f3f4f6;
-      border: 1px solid var(--border);
-      padding: 8px 12px;
+    .tag {
+      display: inline-flex;
+      min-height: 26px;
+      align-items: center;
       border-radius: 999px;
-      font-size: 14px;
-      color: #374151;
+      padding: 0 9px;
+      background: #edf2f7;
+      color: #334155;
+      font-size: 13px;
+      font-weight: 700;
     }
 
-    .timeline {
+    .tag.green {
+      background: #e5f3f0;
+      color: var(--accent-strong);
+    }
+
+    .tag.blue {
+      background: #e8efff;
+      color: var(--blue);
+    }
+
+    .tag.warm {
+      background: #fff3e1;
+      color: var(--warm);
+    }
+
+    .post-card h3 {
+      margin: 0;
+      color: var(--ink);
+      font-size: 23px;
+      line-height: 1.35;
+    }
+
+    .post-card p {
+      margin-bottom: 0;
+      color: #46566a;
+    }
+
+    .read-more {
+      width: fit-content;
+      margin-top: 4px;
+      font-weight: 800;
+    }
+
+    .sidebar {
       display: grid;
-      gap: 16px;
+      align-content: start;
+      gap: 30px;
     }
 
-    .item {
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 18px;
-      background: #fcfdff;
+    .side-block {
+      border-top: 3px solid var(--ink);
+      padding-top: 14px;
     }
 
-    .item h3 {
-      font-size: 18px;
-      margin-bottom: 6px;
-    }
-
-    .item .meta {
-      color: var(--subtext);
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-
-    .item ul {
-      padding-left: 18px;
-      color: #374151;
-    }
-
-    .item li + li {
-      margin-top: 6px;
-    }
-
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .project-card {
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 20px;
-      background: #fcfdff;
-    }
-
-    .project-card h3 {
-      margin-bottom: 8px;
-      font-size: 18px;
-    }
-
-    .project-card p {
-      color: #4b5563;
+    .side-block h2 {
       margin-bottom: 12px;
+      color: var(--ink);
+      font-size: 20px;
+    }
+
+    .topic-list,
+    .archive-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .topic-list a,
+    .archive-list a {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+      color: #334155;
+      font-weight: 650;
+    }
+
+    .topic-list span,
+    .archive-list span {
+      color: var(--muted);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .note {
+      margin: 0;
+      color: #526173;
       font-size: 15px;
     }
 
-    .contact-list {
-      display: grid;
+    .subscribe-box {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      background: #ffffff;
+    }
+
+    .subscribe-box p {
+      margin-bottom: 12px;
+      color: #46566a;
+      font-size: 15px;
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--line);
+      background: #ffffff;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
       gap: 12px;
-      font-size: 16px;
-    }
-
-    footer {
-      text-align: center;
-      color: var(--subtext);
+      padding: 24px 0;
       font-size: 14px;
-      padding: 24px 0 48px;
     }
 
-    @media (max-width: 860px) {
-      .hero-card {
+    @media (max-width: 880px) {
+      .masthead-inner,
+      .content-grid {
         grid-template-columns: 1fr;
+      }
+
+      .masthead-inner {
+        padding: 44px 0 36px;
       }
 
       h1 {
-        font-size: 32px;
+        font-size: 36px;
       }
 
-      .project-grid {
-        grid-template-columns: 1fr;
+      .author-panel {
+        max-width: 520px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .header-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 12px 0;
+      }
+
+      nav {
+        justify-content: flex-start;
+      }
+
+      h1 {
+        font-size: 31px;
+      }
+
+      .lede {
+        font-size: 16px;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .post-card {
+        padding: 18px;
+      }
+
+      .post-card h3 {
+        font-size: 20px;
       }
     }
   </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="container">
-      <div class="hero-card">
-        <div>
-          <div class="badge">个人主页 / Portfolio</div>
-          <h1>你好，我是你的名字</h1>
-          <p class="subtitle">视觉软件工程师 / .NET 开发 / 工业检测与产线项目落地</p>
-          <p class="intro">
-            我主要从事工业视觉检测设备的软件开发、现场调试与项目交付，
-            熟悉 C#、.NET、Halcon、TCP/IP、UDP，以及检测数据记录、异常分析与产线联机相关工作。
-            目前希望继续深耕工业软件、制造业数字化和企业级应用开发。
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#projects">查看项目</a>
-            <a class="btn btn-secondary" href="#contact">联系我</a>
-          </div>
-        </div>
-
-        <aside class="profile-box">
-          <div class="profile-avatar">你</div>
-          <h3>基本信息</h3>
-          <p><strong>城市：</strong>江苏 / 上海 / 可改成你的城市</p>
-          <p><strong>方向：</strong>工业视觉、.NET、制造业软件</p>
-          <p><strong>求职目标：</strong>视觉软件工程师 / MES / 制造业信息化</p>
-          <p><strong>状态：</strong>在职 / 离职可到岗 / 可改</p>
-        </aside>
-      </div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="HeathRelease Blog 首页">
+        <span class="brand-mark">HR</span>
+        <span>HeathRelease Blog</span>
+      </a>
+      <nav aria-label="主导航">
+        <a href="#posts">文章</a>
+        <a href="#topics">主题</a>
+        <a href="#archive">归档</a>
+        <a href="https://github.com/HeathRelease" target="_blank" rel="noopener">GitHub</a>
+      </nav>
     </div>
   </header>
 
-  <main class="container">
-    <section id="about">
-      <div class="section-card">
-        <h2 class="section-title">关于我</h2>
-        <p>
-          我有工业现场项目经验，参与过电池片检测、晶圆检测、膜厚检测等项目的实施与交付。
-          日常工作包括视觉检测设备调试、参数配置、异常排查、联机通信、数据记录及与算法、电气、机械、工艺团队协作。
-          除了设备端开发，我也在持续补强 Web API、数据库设计、权限系统、统计分析和企业级项目架构能力。
+  <section id="top" class="masthead">
+    <div class="masthead-inner">
+      <div>
+        <p class="kicker">技术博客 / Engineering Notes</p>
+        <h1>记录软件开发、工业视觉和工程现场里的真实问题。</h1>
+        <p class="lede">
+          这里会作为长期维护的博客入口：写 .NET、设备通信、数据库、GitHub Pages、工业视觉项目复盘，也写把复杂问题拆开解决的过程。
         </p>
-      </div>
-    </section>
-
-    <section id="skills">
-      <div class="section-card">
-        <h2 class="section-title">技术栈</h2>
-        <div class="chips">
-          <span class="chip">C#</span>
-          <span class="chip">.NET / ASP.NET Core</span>
-          <span class="chip">WinForms / WPF</span>
-          <span class="chip">Halcon</span>
-          <span class="chip">MySQL</span>
-          <span class="chip">SQLite</span>
-          <span class="chip">SQL Server</span>
-          <span class="chip">TCP/IP</span>
-          <span class="chip">UDP</span>
-          <span class="chip">SECS/GEM</span>
-          <span class="chip">REST API</span>
-          <span class="chip">Git / GitHub</span>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#posts">阅读最新文章</a>
+          <a class="btn" href="#topics">按主题浏览</a>
         </div>
       </div>
-    </section>
 
-    <section id="experience">
-      <div class="section-card">
-        <h2 class="section-title">项目经历</h2>
-        <div class="timeline">
-          <article class="item">
-            <h3>电池片隐裂 / PL 检测项目</h3>
-            <div class="meta">技术栈：.NET Framework / VB / Halcon / UDP / TCPIP / MySQL / Access</div>
-            <ul>
-              <li>负责视觉检测设备现场调试、参数配置与问题排查。</li>
-              <li>支持多个工艺节点检测设备运行，协助客户处理误检、漏检、联机等问题。</li>
-              <li>使用 MySQL 记录检测数据，参与数据统计与异常分析。</li>
-              <li>协同算法、电气、机械、工艺团队推进项目落地。</li>
-            </ul>
-          </article>
-
-          <article class="item">
-            <h3>12 寸晶圆酸洗残留检测</h3>
-            <div class="meta">技术栈：.NET 6 / C# / Halcon / SECS/GEM</div>
-            <ul>
-              <li>负责视觉检测设备现场调试、参数配置与问题排查。</li>
-              <li>配合 EAP 系统进行联机对接与异常报警处理。</li>
-              <li>使用 CSV 记录检测数据，参与数据统计与异常分析。</li>
-            </ul>
-          </article>
-
-          <article class="item">
-            <h3>电池片镀膜工艺 Poly 膜厚检测</h3>
-            <div class="meta">技术栈：.NET 6 / C# / UDP / TCPIP / SQLite</div>
-            <ul>
-              <li>基于白光干涉仪进行膜厚检测。</li>
-              <li>负责检测设备现场调试、参数配置与异常问题处理。</li>
-              <li>参与设备通信、数据落库及现场交付支持。</li>
-            </ul>
-          </article>
+      <aside class="author-panel" aria-label="博客信息">
+        <div class="author-top">
+          <img src="https://avatars.githubusercontent.com/u/100417951?v=4" alt="HeathRelease GitHub avatar" width="64" height="64" />
+          <div>
+            <h2>HeathRelease</h2>
+            <p>写给未来自己的工程笔记。</p>
+          </div>
         </div>
+        <p>
+          文章偏实践：少一点口号，多一点可复盘的思路、代码片段、排查路径和踩坑记录。
+        </p>
+        <div class="quick-notes">
+          <span>当前关注：.NET、视觉检测、设备通信、数据记录。</span>
+          <span>更新方式：先把问题写清楚，再慢慢补成系列。</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <main class="content-grid">
+    <section id="posts" aria-labelledby="posts-title">
+      <div class="section-heading">
+        <h2 id="posts-title">最新文章</h2>
+        <p>从工作现场和学习记录里整理出的笔记。</p>
+      </div>
+
+      <div class="post-list">
+        <article class="post-card featured">
+          <div class="post-meta">
+            <time datetime="2026-05-14">2026-05-14</time>
+            <span class="tag green">GitHub Pages</span>
+            <span class="tag blue">Blog</span>
+          </div>
+          <h3>把个人主页改造成技术博客：首页应该承载什么？</h3>
+          <p>
+            一个博客首页最重要的不是把经历一次性讲完，而是让读者快速知道：这里写什么、怎么更新、哪些主题值得继续读。这篇作为新博客的第一条记录。
+          </p>
+          <a class="read-more" href="#top">阅读笔记</a>
+        </article>
+
+        <article class="post-card">
+          <div class="post-meta">
+            <time datetime="2026-05-10">2026-05-10</time>
+            <span class="tag green">.NET</span>
+            <span class="tag warm">工程实践</span>
+          </div>
+          <h3>从桌面程序到 Web API：设备软件工程师的迁移路线</h3>
+          <p>
+            整理 WinForms/WPF、ASP.NET Core、数据库、鉴权、日志和部署之间的联系，给自己的学习路线留一张清晰地图。
+          </p>
+          <a class="read-more" href="#topics">查看主题</a>
+        </article>
+
+        <article class="post-card">
+          <div class="post-meta">
+            <time datetime="2026-05-06">2026-05-06</time>
+            <span class="tag blue">工业视觉</span>
+            <span class="tag">通信日志</span>
+          </div>
+          <h3>现场排查里，为什么通信日志经常比截图更有用</h3>
+          <p>
+            记录一次设备联机问题的排查框架：先确认时序，再看报文，再定位边界条件，避免被表面现象带着跑。
+          </p>
+          <a class="read-more" href="#archive">查看归档</a>
+        </article>
       </div>
     </section>
 
-    <section id="projects">
-      <div class="section-card">
-        <h2 class="section-title">个人作品 / 练手项目</h2>
-        <div class="project-grid">
-          <article class="project-card">
-            <h3>制造检测数据统计平台</h3>
-            <p>
-              用 ASP.NET Core + MySQL 做的企业级练手项目，
-              包含检测记录、缺陷统计、分页查询、筛选分析、登录鉴权等模块。
-            </p>
-            <a href="#">GitHub 仓库链接</a>
-          </article>
+    <aside class="sidebar" aria-label="博客侧栏">
+      <section id="topics" class="side-block" aria-labelledby="topics-title">
+        <h2 id="topics-title">主题索引</h2>
+        <ul class="topic-list">
+          <li><a href="#posts">.NET 与 C# <span>3 篇</span></a></li>
+          <li><a href="#posts">工业视觉 <span>2 篇</span></a></li>
+          <li><a href="#posts">数据库与日志 <span>2 篇</span></a></li>
+          <li><a href="#posts">GitHub Pages <span>1 篇</span></a></li>
+        </ul>
+      </section>
 
-          <article class="project-card">
-            <h3>个人技术博客 / 笔记站</h3>
-            <p>
-              用 GitHub Pages 搭建，用于整理 .NET、SQL、工业视觉、MES 学习笔记和项目总结。
-            </p>
-            <a href="#">在线访问链接</a>
-          </article>
+      <section id="archive" class="side-block" aria-labelledby="archive-title">
+        <h2 id="archive-title">归档</h2>
+        <ul class="archive-list">
+          <li><a href="#posts">2026 年 5 月 <span>3</span></a></li>
+          <li><a href="#posts">工程随笔 <span>持续更新</span></a></li>
+        </ul>
+      </section>
 
-          <article class="project-card">
-            <h3>设备通信调试工具</h3>
-            <p>
-              用于模拟 TCP/UDP 通信、查看报文、辅助定位现场联机异常，提升排查效率。
-            </p>
-            <a href="#">项目说明</a>
-          </article>
+      <section class="side-block" aria-labelledby="about-title">
+        <h2 id="about-title">关于这个博客</h2>
+        <p class="note">
+          这是一个轻量静态博客首页。后续可以把每篇文章拆成独立 HTML 或迁移到 Jekyll/Hugo，让归档、标签和 RSS 自动生成。
+        </p>
+      </section>
 
-          <article class="project-card">
-            <h3>生产数据看板 Demo</h3>
-            <p>
-              展示产线良率、缺陷分布、设备状态、报警信息等数据，贴近制造业业务场景。
-            </p>
-            <a href="#">演示地址</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="section-card">
-        <h2 class="section-title">联系方式</h2>
-        <div class="contact-list">
-          <p><strong>Email：</strong>yourname@example.com</p>
-          <p><strong>GitHub：</strong><a href="https://github.com/yourname" target="_blank">github.com/yourname</a></p>
-          <p><strong>博客/主页：</strong><a href="#">你的站点链接</a></p>
-          <p><strong>微信：</strong>可填写 / 可删除</p>
-        </div>
-      </div>
-    </section>
+      <section class="subscribe-box" aria-labelledby="follow-title">
+        <h2 id="follow-title">关注更新</h2>
+        <p>博客源码托管在 GitHub Pages，文章会随着仓库提交持续更新。</p>
+        <a class="btn" href="https://github.com/HeathRelease/HeathRelease.github.io" target="_blank" rel="noopener">查看仓库</a>
+      </section>
+    </aside>
   </main>
 
-  <footer>
-    <div class="container">
-      © 2026 你的名字. All Rights Reserved.
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© 2026 HeathRelease Blog</span>
+      <span>Built with GitHub Pages</span>
     </div>
   </footer>
 </body>
