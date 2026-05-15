@@ -19,6 +19,8 @@
 
 html {
   font-size: 20px;
+  min-height: 100%;
+  background: var(--bg);
 }
 
 @keyframes page-rise {
@@ -46,13 +48,21 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   margin: 0;
   background:
-    linear-gradient(180deg, #191c19 0%, #111312 28rem, var(--bg) 100%);
+    linear-gradient(180deg, #191c19 0%, #111312 28rem, var(--bg) 56rem) no-repeat,
+    var(--bg);
   color: var(--text);
   font-family: Georgia, "Times New Roman", "Songti SC", "SimSun", serif;
   line-height: 1.65;
   animation: page-rise 460ms ease-out both;
+}
+
+main {
+  flex: 1 0 auto;
 }
 
 ::selection {
